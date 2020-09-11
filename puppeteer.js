@@ -1,0 +1,27 @@
+const puppeteer = require('puppeteer')
+
+const symbols = ["AAPL", "TSLA"];
+
+async function app () {
+    for await (symbol of symbols){
+        const description  = await getdescription(symbol)
+        console.log({symbol, description})
+    }
+}
+
+async function getdescription (symbol) {
+    const browser = await puppeteer.launch({headless:false});
+    const page = await browser.newPage()
+    await page.goto(`https://ih.advfn.com/stock-market/NASDAQ/${symbol}/stock-price`)
+    
+    const text = await page.evaluate(()=> {
+        return document.querySelector("#content > .TableElement:last-child").innerText
+    })
+
+    await browser.close()
+
+    return text
+
+}
+
+app()
