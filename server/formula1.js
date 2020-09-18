@@ -11,12 +11,12 @@ async function app () {
 }
 
 async function getdescription (symbol) {
-    const browser = await puppeteer.launch({headless:false});
+    const browser = await puppeteer.launch({headless:true});
     const page = await browser.newPage()
     await page.goto(`https://www.formula1.com/en/results.html/2020/${symbols}.html`)
     
     const text = await page.evaluate(()=> {
-        return document.querySelector("body > div.site-wrapper > main > article > div > div.ResultArchiveContainer > div.resultsarchive-wrapper > div.resultsarchive-content > div > table").innerHTML
+        return document.querySelector("body > div.site-wrapper > main > article > div > div.ResultArchiveContainer > div.resultsarchive-wrapper > div.resultsarchive-content > div > table").innerText.split('\n')
 
     })
 
