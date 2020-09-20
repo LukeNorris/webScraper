@@ -6,14 +6,13 @@ const fetch = require("isomorphic-fetch");
 app = express()
 
  
- 
  // sending request at 30 second intervals
  cron.schedule("*/30 * * * * *", function(){
    console.log("---------------------");
    console.log("Running Cron Job");
 
 
-
+//scraping 
 const symbols = ["SHOP", "CNR"];
 
 async function getData() {
