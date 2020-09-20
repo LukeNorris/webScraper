@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import './DataTable.css'
 
 export default function DataTable({data, sortedField}) {
  const [people, setPeople] = useState([])
@@ -8,7 +9,7 @@ export default function DataTable({data, sortedField}) {
  }, [data])
 
     return (
-        <table className="table table-sortable" >
+        <table>
                 <thead>
                     <tr className="heading">
                         <th>id
