@@ -8,10 +8,10 @@ function App() {
     let people = [...results]
     const [data, setData] = useState(results)
     const [order, setOrder] = useState(true)
-    const [q, setQ] = useState("")
 
+    const [q, setQ] = useState("")
     const [d, setD] = useState([])
-    const [searchColumns, setSearchColumns] = useState("")
+    const [searchColumns, setSearchColumns] = useState([])
 
     useEffect(() => {
         fetch("http://dummy.restapiexample.com/api/v1/employees")
@@ -35,8 +35,11 @@ function App() {
     }
 
     function search(rows) {
-        return rows.filter(
-            row => columns.some(column => row[column].toString().toLowerCase().indexOf(q.toLowerCase()) > -1)
+        return rows.filter(row => 
+            searchColumns.some(
+                (column) => 
+                    row[column].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+            )
         )
     }
 
