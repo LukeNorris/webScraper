@@ -11,7 +11,7 @@ function App() {
 
     const [q, setQ] = useState("")
     const [d, setD] = useState([])
-    const [searchColumns, setSearchColumns] = useState([])
+    const [searchColumns, setSearchColumns] = useState(["id"])
 
     useEffect(() => {
         fetch("http://dummy.restapiexample.com/api/v1/employees")
